@@ -4,7 +4,6 @@ const NavBar = () => {
   const links = [
     { path: '/', name: 'Home' },
     { path: 'details', name: 'Details' },
-    { path: '*', name: 'NotMatch' },
   ];
 
   return (
