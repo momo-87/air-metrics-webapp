@@ -1,11 +1,11 @@
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom';
 
 const NavBar = () => {
   const links = [
-    {path: '/', name: 'Home'},
-    {path: 'details', name: 'Details'},
-    {path: '*', name: 'NotMatch'},
-  ]
+    { path: '/', name: 'Home' },
+    { path: 'details', name: 'Details' },
+    { path: '*', name: 'NotMatch' },
+  ];
 
   return (
     <nav>
@@ -21,7 +21,7 @@ const NavBar = () => {
         ))}
       </ul>
     </nav>
-  );  
+  );
 };
 
 export default NavBar;

@@ -4,4 +4,4 @@ const Details = () => (
   </div>
 );
 
-export default Details
+export default Details;

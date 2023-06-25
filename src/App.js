@@ -5,7 +5,6 @@ import Details from './routes/Details';
 import NotMatch from './routes/NotMatch';
 import './App.css';
 
-
 function App() {
   return (
     <div className="App">
