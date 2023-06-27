@@ -1,6 +1,8 @@
+import NearestCity from 'components/NearestCity';
+
 const Home = () => (
   <div>
-    <p>Home page content</p>
+    <NearestCity />
   </div>
 );
 
