@@ -8,6 +8,8 @@ import Home from './routes/Home';
 import Details from './routes/Details';
 import NotMatch from './routes/NotMatch';
 import './App.css';
+import './styles/home.scss';
+import './styles/navbar.scss';
 
 function App() {
   const dispatch = useDispatch();

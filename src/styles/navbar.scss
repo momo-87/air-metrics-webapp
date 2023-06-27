@@ -1,0 +1,16 @@
+@media only screen and (min-width: 220px) {
+
+  nav {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    background-color:#394867;
+    
+    ul {
+      display: flex;
+      height: 60px;
+
+      li a {
+      color: #F1F6F9;
+      }
+    }
+  }
+}

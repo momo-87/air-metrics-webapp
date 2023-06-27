@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+ul li a {
+  text-decoration: none;
+}
+
+
+
+
+@media only screen and (min-width: 220px) {
+
+  div.nearest-city-box {
+    margin-top: 20px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    display: flex;
+    padding-bottom: 20px;
+
+    div.weather-infos-box {
+      width: 65%;
+
+      div.weather-icon-box {
+        width: 50%;
+        margin: 0 25% 0 25%;
+
+        img {
+          width: 80%;
+        }
+      }
+
+      div.weather-data-box {
+        display: flex;
+        justify-content: space-around;
+
+        div.hu-box {
+          display: flex;
+          align-items: center;
+          gap: 3px;
+
+          img{
+            width: 10px;
+          }
+        }
+      }
+    }
+
+    div.air-data-box {
+      width: 35%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      h1 {
+        font-size: 1rem;
+      }
+
+      p.aqi-value {
+        width: 50%;
+        margin-top: 20px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #AE4021;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+      }
+
+      p.aqi-source {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #AE4021;
+      }
+      
+    }
+  }
+  
+}
