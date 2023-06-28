@@ -1,8 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-// import { getCountries, getNearestCityData } from 'redux/home/homeSlice';
-// import { getNearestCityData } from 'redux/home/homeSlice';
+import { getNearestCityData } from 'redux/home/homeSlice';
 import Layout from './components/Layout';
 import Home from './routes/Home';
 import Details from './routes/Details';
@@ -14,8 +13,8 @@ import './styles/navbar.scss';
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    // dispatch(getNearestCityData());
-    // dispatch(getCountries());
+    // dispatch(getOtherCitiesData());
+    dispatch(getNearestCityData());
   }, [dispatch]);
   return (
     <div className="App">
