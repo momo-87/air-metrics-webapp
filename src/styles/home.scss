@@ -13,8 +13,6 @@ ul li a {
 }
 
 
-
-
 @media only screen and (min-width: 220px) {
 
   div.nearest-city-box {
@@ -142,8 +140,6 @@ ul li a {
     display: grid;
     grid-template-columns: 50% 50%;
     margin-top: 5px;
-    // background-color: #9BA4B5;
-    // border: 1px solid red;
 
     div.city-item-box {
       width: 98%;
@@ -152,11 +148,9 @@ ul li a {
       border: 1px solid #9BA4B5;
       border-radius: 5px;
       color: #212A3E;
-      // background-color: #F1F6F9;
 
       div.weather-box {
         width: 100%;
-        // border: 1px solid blue;
 
         div.image-box {
           width: 100%;
@@ -169,7 +163,6 @@ ul li a {
         div.weather-details {
           display: flex;
           justify-content: space-between;
-          // border: 1px solid green;
           padding-left: 2%;
           font-weight: bold;
           font-size: 0.8rem;
