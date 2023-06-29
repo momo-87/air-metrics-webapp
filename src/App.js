@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-// import { getNearestCityData } from 'redux/home/homeSlice';
+import { getNearestCityData } from 'redux/home/homeSlice';
 import Layout from './components/Layout';
 import Home from './routes/Home';
 import Details from './routes/Details';
@@ -14,8 +14,7 @@ import './styles/detailsPage.scss';
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    // dispatch(getOtherCitiesData());
-    // dispatch(getNearestCityData());
+    dispatch(getNearestCityData());
   }, [dispatch]);
   return (
     <div className="App">

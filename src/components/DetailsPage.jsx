@@ -1,76 +1,83 @@
+import { useSelector } from 'react-redux';
 import waterDrop from 'assets/icons/drop.png';
+import { getData } from 'redux/home/homeSlice';
 
 const DetailsPage = () => {
-  const city = {
-    city: 'Mengang',
-    aqi: 1,
-    pollutionLevel: 'Good',
-    pollution: {
-      co: 383.85,
-      no: 0.01,
-      no2: 0.14,
-      o3: 37.19,
-      so2: 0.06,
-      pm2_5: 1.3,
-      pm10: 1.96,
-      nh3: 0.05,
-    },
-    weather: {
-      temp: 302.43,
-      hu: 48,
-      ws: 2.27,
-      icon: '04d',
-    },
+  const { clickedCity } = useSelector(getData);
+  // Add pillution Level to clicked city
+  const pollutionLevel = (aqi) => {
+    let level = '';
+    switch (aqi) {
+      case 1:
+        level = 'Good';
+        break;
+      case 2:
+        level = 'Fair';
+        break;
+      case 3:
+        level = 'Moderate';
+        break;
+      case 4:
+        level = 'Poor';
+        break;
+      case 5:
+        level = 'Very Poor';
+        break;
+      default:
+        clickedCity.pollutionLevel = '';
+    }
+    return level;
   };
+
   return (
     <>
       <div className="details-section">
         <div className="weather-infos-box">
           <div className="weather-icon-box">
-            <img src={`https://download.spinetix.com/content/widgets/icons/weather/${city.weather.icon}.png`} alt="weather icon" />
+            <img src={`https://download.spinetix.com/content/widgets/icons/weather/${clickedCity.weather.icon}.png`} alt="weather icon" />
           </div>
           <div className="weather-data-box">
             <div className="temp-box">
-              {city.weather.temp}
+              {clickedCity.weather.temp}
               °
             </div>
             <div className="hu-box">
               <img src={waterDrop} alt="water drop" />
-              {city.weather.hu}
+              {clickedCity.weather.hu}
               %
             </div>
             <div className="ws-box">
               ws:
               {' '}
-              {city.weather.ws}
+              {clickedCity.weather.ws}
               m/s
             </div>
           </div>
         </div>
         <div className="air-data-box">
           <h1 className="city">
-            {city.city}
+            {clickedCity.city}
             {' '}
             Air Quality Index
           </h1>
-          <p className={city.pollutionLevel}>
-            {city.aqi}
+          <p className={pollutionLevel(clickedCity.aqi)}>
+            {clickedCity.aqi}
           </p>
           <p
-            className={city.pollutionLevel}
+            className={pollutionLevel(clickedCity.aqi)}
           >
-            {city.pollutionLevel}
+            {pollutionLevel(clickedCity.aqi)}
             <span className="pollutant">
               PM2.5:
               {' '}
-              {city.pollution.pm2_5}
+              {clickedCity.pollution.pm2_5}
               μg/m
               <sup>3</sup>
             </span>
             <span className="pollutant">
               PM10:
               {' '}
-              {city.pollution.pm10}
+              {clickedCity.pollution.pm10}
               μg/m
               <sup>3</sup>
             </span>
@@ -83,42 +90,42 @@ const DetailsPage = () => {
         <p>
           CO:
           {' '}
-          {city.pollution.co}
+          {clickedCity.pollution.co}
           μg/m
           <sup>3</sup>
         </p>
         <p>
           NO:
           {' '}
-          {city.pollution.no}
+          {clickedCity.pollution.no}
           μg/m
           <sup>3</sup>
         </p>
         <p>
           NO2:
           {' '}
-          {city.pollution.no2}
+          {clickedCity.pollution.no2}
           μg/m
           <sup>3</sup>
         </p>
         <p>
           O3:
           {' '}
-          {city.pollution.o3}
+          {clickedCity.pollution.o3}
           μg/m
           <sup>3</sup>
         </p>
         <p>
           SO2:
           {' '}
-          {city.pollution.so2}
+          {clickedCity.pollution.so2}
           μg/m
           <sup>3</sup>
         </p>
         <p>
           NH3:
           {' '}
-          {city.pollution.nh3}
+          {clickedCity.pollution.nh3}
           μg/m
           <sup>3</sup>
         </p>

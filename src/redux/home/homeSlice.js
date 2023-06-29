@@ -541,12 +541,17 @@ const initialState = {
   ],
   isLoading: true,
   error: undefined,
+  clickedCity: {},
 };
 
 const homeSlice = createSlice({
   name: 'home',
   initialState,
-  reducers: {},
+  reducers: {
+    addClickedCity: (state, action) => {
+      state.clickedCity = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(getNearestCityData.pending, (state) => {
@@ -590,4 +595,5 @@ const homeSlice = createSlice({
 });
 
 export const getData = (state) => (state.home);
+export const { addClickedCity } = homeSlice.actions;
 export default homeSlice.reducer;

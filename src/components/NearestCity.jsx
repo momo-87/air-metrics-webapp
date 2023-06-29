@@ -6,9 +6,9 @@ const NearestCity = () => {
   const { city, isLoading, error } = useSelector(getData);
   return (
     <div className="nearest-city-box">
-      {!isLoading && <p>is Loading...</p>}
+      {isLoading && <p>is Loading...</p>}
       {error && <p>{error}</p>}
-      {(isLoading && !error)
+      {(!isLoading && !error)
             && (
             <>
               <div className="weather-infos-box">

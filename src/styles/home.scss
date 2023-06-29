@@ -8,9 +8,14 @@ ul {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 ul li a {
   text-decoration: none;
 }
+
 
 
 @media only screen and (min-width: 220px) {
