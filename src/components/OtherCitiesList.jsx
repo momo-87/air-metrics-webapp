@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { BsArrowRightCircle } from 'react-icons/bs';
 import { v4 as uuidv4 } from 'uuid';
 import { getData, addClickedCity } from 'redux/home/homeSlice';
 
@@ -19,6 +20,7 @@ const OtherCitiesList = () => {
                   onClick={() => (handleClick(cityItem))}
                 >
                   <div className="city-item-box">
+                    <BsArrowRightCircle className="next-arrow" />
                     <div className="weather-box">
                       <div className="image-box">
                         <img src={`https://download.spinetix.com/content/widgets/icons/weather/${cityItem.weather.icon}.png`} alt="weather icon" />

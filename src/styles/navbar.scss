@@ -3,14 +3,45 @@
   nav {
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
     background-color:#394867;
-    
-    ul {
-      display: flex;
-      height: 60px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 5%;
 
-      li a {
-      color: #F1F6F9;
-      }
+    img {
+      width: 40%;
     }
+
+    input {
+      height: 30px;
+      padding: 5px;
+      border-radius: 5px;
+      width: 40%;
+    }
+
+    input::placeholder {
+      padding: 5px;
+    }
+
+    .home-icon {
+      color: #F1F6F9;
+      width: 25px;
+      height: 25px;
+      margin-left: 5px;
+      box-shadow: 2px 2px 2px #F1F6F9;
+      border: 1px solid #F1F6F9;
+      border-radius: 3px;
+    }
+
+    
+    // ul {
+    //   display: flex;
+    //   height: 60px;
+
+    //   li a {
+    //   color: #F1F6F9;
+    //   }
+    // }
   }
 }
