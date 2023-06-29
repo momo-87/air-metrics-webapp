@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { AiOutlineHome } from 'react-icons/ai';
+import { BsArrowBarDown } from 'react-icons/bs';
 import logo from 'assets/icons/logo.png';
 
 const NavBar = () => (
@@ -12,7 +13,11 @@ const NavBar = () => (
     {/* <ul> */}
     {/* {links.map((link) => ( */}
     {/* <li key={link.path}> */}
-    <input type="text" placeholder="Enter Location" />
+    <div className="search-box">
+      <input type="text" placeholder="Enter Location" />
+      <BsArrowBarDown className="search-icon" />
+    </div>
+
     <NavLink
       to="/"
     >

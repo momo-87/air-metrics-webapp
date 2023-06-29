@@ -29,6 +29,27 @@ ul li a {
     align-items: center;
     color: #212A3E;
 
+    div.progress {
+      background-color: #F1F6F9;
+      width: 16rem;
+      height: 0.25rem;
+      overflow: hidden;
+      border: 1px solid #212A3E;
+      border-radius: 2px;
+
+      div.inner {
+        background-color: #212A3E;
+        height: 100%;
+        transform-origin: left;
+        animation: progress 1s infinite;
+      }
+    }
+
+    @keyframes progress {
+      from { transform: scaleX(5%) translateX(-5%); }
+      to { transform: scaleX(75%) translateX(130%); }
+    }
+      
     div.weather-infos-box {
       width: 60%;
 
