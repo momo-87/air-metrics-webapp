@@ -1,10 +1,10 @@
 import NearestCity from 'components/NearestCity';
-// import OtherCitiesList from 'components/OtherCitiesList';
+import OtherCitiesList from 'components/OtherCitiesList';
 
 const Home = () => (
   <div>
     <NearestCity />
-    {/* <OtherCitiesList /> */}
+    <OtherCitiesList />
   </div>
 );
 
