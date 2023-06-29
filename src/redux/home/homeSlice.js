@@ -22,7 +22,10 @@ const NEAREST_CITY_URL = {
 };
 export const getNearestCityData = createAsyncThunk('data/getNearestCityData', async (_, { rejectWithValue }) => {
   try {
+    // Fetch Nearest City data
     const idendificationResp = await axios.get(NEAREST_CITY_URL.IDENTIFICATION_URL);
+    const country = idendificationResp.data.country_name;
+    const state = idendificationResp.data.state_prov;
     const cityName = idendificationResp.data.city;
     const coordResp = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
     const { lat, lon } = coordResp.data[0];
@@ -30,6 +33,222 @@ export const getNearestCityData = createAsyncThunk('data/getNearestCityData', as
     const weatherResp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
     const airPollutionIndex = pollutionResp.data.list[0].main.aqi;
     let pollutionLevel = '';
+
+    // Fetch other cities data
+    // const coords = [
+    //   { lat, lon: lon + 0.5 },
+    //   { lat, lon: lon - 0.5 },
+    //   { lat: lat + 0.5, lon },
+    //   { lat: lat - 0.5, lon },
+    //   { lat: lat + 0.5, lon: lon + 0.5 },
+    //   { lat: lat - 0.5, lon: lon - 0.5 },
+    //   { lat: lat + 0.5, lon: lon - 0.5 },
+    //   { lat: lat - 0.5, lon: lon + 0.5 },
+    // ];
+
+    // const otherCities = [];
+
+    // const requests = coords.map(async (coord) => {
+    //   const cityResp = axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${coord.lat}&lon=${coord.lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    //   const pollutionResp = axios.get(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${coord.lat}&lon=${coord.lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    //   const weatherResp = axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coord.lat}&lon=${coord.lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+
+    //   const [cityData, pollutionData, weatherData] = await Promise.all([
+    //     cityResp, pollutionResp, weatherResp]);
+
+    //   const city = {
+    //     city: cityData.data[0].name,
+    //     aqi: pollutionData.data.list[0].main.aqi,
+    //     pollution: pollutionData.data.list[0].components,
+    //     weather: {
+    //       temp: weatherData.data.main.temp,
+    //       hu: weatherData.data.main.humidity,
+    //       ws: weatherData.data.wind.speed,
+    //       icon: weatherData.data.weather[0].icon,
+    //     },
+    //   };
+
+    //   return city;
+    // });
+
+    const coords = [
+      { lat, lon: lon + 0.5 },
+      { lat, lon: lon - 0.5 },
+      { lat: lat + 0.5, lon },
+      { lat: lat - 0.5, lon },
+      { lat: lat + 0.5, lon: lon + 0.5 },
+      { lat: lat - 0.5, lon: lon - 0.5 },
+      { lat: lat + 0.5, lon: lon - 0.5 },
+      { lat: lat - 0.5, lon: lon + 0.5 },
+
+    ];
+    // const getOtherCities = async (coords) => {
+    // const otherCities = [];
+    // coords.forEach(async (coord) => {
+    //   const cityResp = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${coord.lat}&lon=${coord.lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    //   const pollutionResp = await axios.get(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${coord.lat}&lon=${coord.lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    //   const weatherResp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coord.lat}&lon=${coord.lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    //   const city = {
+    //     city: cityResp.data[0].name,
+    //     aqi: pollutionResp.data.list[0].main.aqi,
+    //     pollution: pollutionResp.data.list[0].components,
+    //     weather: {
+    //       temp: weatherResp.data.main.temp,
+    //       hu: weatherResp.data.main.humidity,
+    //       ws: weatherResp.data.wind.speed,
+    //       icon: weatherResp.data.weather[0].icon,
+    //     },
+    //   };
+    //   otherCities.push(city);
+    // });
+    // console.log(otherCities);
+    // return [...otherCities];
+    // };
+    // const otherCities = await getOtherCities(coords);
+    // console.log(otherCities[0]);
+
+    // const a = await getOtherCities(coords);
+
+    // console.log(a);
+
+    // city 1
+    const city1Resp = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${coords[0].lat}&lon=${coords[0].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const pollution1Resp = await axios.get(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[0].lat}&lon=${coords[0].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const weather1Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[0].lon}&lon=${coords[0].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const otherCities = [];
+    const city1 = {
+      city: city1Resp.data[0].name,
+      aqi: pollution1Resp.data.list[0].main.aqi,
+      pollution: pollution1Resp.data.list[0].components,
+      weather: {
+        temp: weather1Resp.data.main.temp,
+        hu: weather1Resp.data.main.humidity,
+        ws: weather1Resp.data.wind.speed,
+        icon: weather1Resp.data.weather[0].icon,
+      },
+    };
+    otherCities.push(city1);
+
+    // city 2
+    const city2Resp = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${coords[1].lat}&lon=${coords[1].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const pollution2Resp = await axios.get(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[1].lat}&lon=${coords[1].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const weather2Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[1].lon}&lon=${coords[1].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city2 = {
+      city: city2Resp.data[0].name,
+      aqi: pollution2Resp.data.list[0].main.aqi,
+      pollution: pollution2Resp.data.list[0].components,
+      weather: {
+        temp: weather2Resp.data.main.temp,
+        hu: weather2Resp.data.main.humidity,
+        ws: weather2Resp.data.wind.speed,
+        icon: weather2Resp.data.weather[0].icon,
+      },
+    };
+    otherCities.push(city2);
+
+    // city 3
+    const city3Resp = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${coords[2].lat}&lon=${coords[2].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const pollution3Resp = await axios.get(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[2].lat}&lon=${coords[2].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const weather3Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[2].lon}&lon=${coords[2].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city3 = {
+      city: city3Resp.data[0].name,
+      aqi: pollution3Resp.data.list[0].main.aqi,
+      pollution: pollution3Resp.data.list[0].components,
+      weather: {
+        temp: weather3Resp.data.main.temp,
+        hu: weather3Resp.data.main.humidity,
+        ws: weather3Resp.data.wind.speed,
+        icon: weather3Resp.data.weather[0].icon,
+      },
+    };
+    otherCities.push(city3);
+
+    // city 4
+    const city4Resp = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${coords[3].lat}&lon=${coords[3].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const pollution4Resp = await axios.get(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[3].lat}&lon=${coords[3].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const weather4Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[3].lon}&lon=${coords[3].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city4 = {
+      city: city4Resp.data[0].name,
+      aqi: pollution4Resp.data.list[0].main.aqi,
+      pollution: pollution4Resp.data.list[0].components,
+      weather: {
+        temp: weather4Resp.data.main.temp,
+        hu: weather4Resp.data.main.humidity,
+        ws: weather4Resp.data.wind.speed,
+        icon: weather4Resp.data.weather[0].icon,
+      },
+    };
+    otherCities.push(city4);
+
+    // city 5
+    const city5Resp = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${coords[4].lat}&lon=${coords[4].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const pollution5Resp = await axios.get(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[4].lat}&lon=${coords[4].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const weather5Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[4].lon}&lon=${coords[4].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city5 = {
+      city: city5Resp.data[0].name,
+      aqi: pollution5Resp.data.list[0].main.aqi,
+      pollution: pollution5Resp.data.list[0].components,
+      weather: {
+        temp: weather5Resp.data.main.temp,
+        hu: weather5Resp.data.main.humidity,
+        ws: weather5Resp.data.wind.speed,
+        icon: weather5Resp.data.weather[0].icon,
+      },
+    };
+    otherCities.push(city5);
+
+    // // city 6
+    // const city6Resp = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${coords[5].lat}&lon=${coords[5].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    // const pollution6Resp = await axios.get(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[5].lat}&lon=${coords[5].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    // const weather6Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[5].lat}&lon=${coords[5].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    // const city6 = {
+    //   city: city6Resp.data[0].name,
+    //   aqi: pollution6Resp.data.list[0].main.aqi,
+    //   pollution: pollution6Resp.data.list[0].components,
+    //   weather: {
+    //     temp: weather6Resp.data.main.temp,
+    //     hu: weather6Resp.data.main.humidity,
+    //     ws: weather6Resp.data.wind.speed,
+    //     icon: weather6Resp.data.weather[0].icon,
+    //   },
+    // };
+    // console.log(city6);
+    // otherCities.push(city6);
+
+    // city 7
+    const city7Resp = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${coords[6].lat}&lon=${coords[6].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const pollution7Resp = await axios.get(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[6].lat}&lon=${coords[6].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const weather7Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[6].lat}&lon=${coords[6].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city7 = {
+      city: city7Resp.data[0].name,
+      aqi: pollution7Resp.data.list[0].main.aqi,
+      pollution: pollution7Resp.data.list[0].components,
+      weather: {
+        temp: weather7Resp.data.main.temp,
+        hu: weather7Resp.data.main.humidity,
+        ws: weather7Resp.data.wind.speed,
+        icon: weather7Resp.data.weather[0].icon,
+      },
+    };
+    otherCities.push(city7);
+
+    // city 8
+    const city8Resp = await axios.get(`http://api.openweathermap.org/geo/1.0/reverse?lat=${coords[7].lat}&lon=${coords[7].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const pollution8Resp = await axios.get(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[7].lat}&lon=${coords[7].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const weather8Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[7].lat}&lon=${coords[7].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city8 = {
+      city: city8Resp.data[0].name,
+      aqi: pollution8Resp.data.list[0].main.aqi,
+      pollution: pollution8Resp.data.list[0].components,
+      weather: {
+        temp: weather8Resp.data.main.temp,
+        hu: weather8Resp.data.main.humidity,
+        ws: weather8Resp.data.wind.speed,
+        icon: weather8Resp.data.weather[0].icon,
+      },
+    };
+    otherCities.push(city8);
+
     switch (airPollutionIndex) {
       case 1:
         pollutionLevel = 'Good';
@@ -49,22 +268,29 @@ export const getNearestCityData = createAsyncThunk('data/getNearestCityData', as
       default:
         pollutionLevel = '';
     }
+    // Promise.all(requests)
+    //   .then((cities) => {
+    //     otherCities.push(...cities);
+    //     return otherCities;
+    //   });
     return (
       {
-        country: idendificationResp.data.country_name,
-        state: idendificationResp.data.state_prov,
-        city: cityName,
-        aqi: airPollutionIndex,
-        pollutionLevel,
-        pollution: pollutionResp.data.list[0].components,
-        weather: {
-          temp: weatherResp.data.main.temp,
-          hu: weatherResp.data.main.humidity,
-          ws: weatherResp.data.wind.speed,
-          icon: weatherResp.data.weather[0].icon,
+        city: {
+          country,
+          state,
+          city: cityName,
+          aqi: airPollutionIndex,
+          pollutionLevel,
+          pollution: pollutionResp.data.list[0].components,
+          weather: {
+            temp: weatherResp.data.main.temp,
+            hu: weatherResp.data.main.humidity,
+            ws: weatherResp.data.wind.speed,
+            icon: weatherResp.data.weather[0].icon,
+          },
         },
+        otherCities,
       }
-
     );
   } catch (error) {
     return rejectWithValue('Failed to fetch nearest city data !!');
@@ -127,7 +353,7 @@ const initialState = {
       icon: '04d',
     },
   },
-  OtherCities: [],
+  otherCities: [],
   isLoading: true,
   error: undefined,
 };
@@ -143,7 +369,8 @@ const homeSlice = createSlice({
         state.error = undefined;
       })
       .addCase(getNearestCityData.fulfilled, (state, action) => {
-        state.city = action.payload;
+        state.city = action.payload.city;
+        state.otherCities = [...action.payload.otherCities];
         state.isLoading = false;
         state.error = undefined;
       })
