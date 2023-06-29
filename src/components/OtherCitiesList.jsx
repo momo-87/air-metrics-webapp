@@ -6,7 +6,7 @@ const OtherCitiesList = () => {
   const { otherCities, isLoading, error } = useSelector(getData);
   return (
     <div className="other-cities-section">
-      {(!isLoading && !error)
+      {(isLoading && !error)
             && (
             <>
               {otherCities.map((cityItem) => (

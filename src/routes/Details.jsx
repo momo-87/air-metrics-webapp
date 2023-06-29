@@ -1,7 +1,7 @@
+import DetailsPage from 'components/DetailsPage';
+
 const Details = () => (
-  <div>
-    <p>Details page content</p>
-  </div>
+  <DetailsPage />
 );
 
 export default Details;

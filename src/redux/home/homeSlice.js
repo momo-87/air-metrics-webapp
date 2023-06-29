@@ -372,6 +372,7 @@ const initialState = {
     {
       city: 'Mengang',
       aqi: 1,
+      pollutionLevel: 'Good',
       pollution: {
         co: 383.85,
         no: 0.01,
@@ -391,6 +392,7 @@ const initialState = {
     },
     {
       city: 'Matomb',
+      pollutionLevel: 'Good',
       aqi: 1,
       pollution: {
         co: 387.19,
@@ -411,6 +413,7 @@ const initialState = {
     },
     {
       city: "Sa'a",
+      pollutionLevel: 'Good',
       aqi: 1,
       pollution: {
         co: 397.21,
@@ -433,6 +436,7 @@ const initialState = {
     {
       city: 'Mbalmayo',
       aqi: 1,
+      pollutionLevel: 'Good',
       pollution: {
         co: 397.21,
         no: 0,
@@ -453,6 +457,7 @@ const initialState = {
     {
       city: 'Nkoteng',
       aqi: 1,
+      pollutionLevel: 'Good',
       pollution: {
         co: 383.85,
         no: 0.01,
@@ -473,6 +478,7 @@ const initialState = {
     {
       city: 'Mvengue',
       aqi: 1,
+      pollutionLevel: 'Good',
       pollution: {
         co: 403.88,
         no: 0.01,
@@ -493,6 +499,7 @@ const initialState = {
     {
       city: 'Bokito',
       aqi: 1,
+      pollutionLevel: 'Good',
       pollution: {
         co: 380.52,
         no: 0.02,
@@ -513,6 +520,7 @@ const initialState = {
     {
       city: 'Zoétélé',
       aqi: 1,
+      pollutionLevel: 'Good',
       pollution: {
         co: 410.56,
         no: 0,
