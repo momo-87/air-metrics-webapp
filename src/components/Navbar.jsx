@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { BsArrowBarDown } from 'react-icons/bs';
 import logo from 'assets/icons/logo.png';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSelectedCity, getData } from 'redux/home/homeSlice';
+import { getSelectedCity, getData, getSelectedCityData } from 'redux/home/homeSlice';
 import { useEffect, useState } from 'react';
 
 const NavBar = () => {
@@ -27,7 +27,7 @@ const NavBar = () => {
   }, [dispatch, inputValue]);
 
   // Access selected city the data from the Redux store using useSelector
-  const { selectedCity } = useSelector(getData);
+  const { selectedCities } = useSelector(getData);
 
   // Handle onClick event when the user clicks on the selected city
   const handleCityClick = (option) => {
@@ -36,8 +36,13 @@ const NavBar = () => {
   // Handle onBlur event (when the input loses focus)
   const handleInputBlur = () => {
     dispatch(getSelectedCity(inputValue));
+    if (selectedCities.length > 0) {
+      const { lat, lon, name } = selectedCities[0];
+      dispatch(getSelectedCityData({ lat, lon, name }));
+    }
     // Remode the option list
     setDisplayStyle('none');
+    // console.log(lat, lon, name);
   };
 
   // Delete the last input letter by pressing Backspace
@@ -59,7 +64,7 @@ const NavBar = () => {
           onKeyDown={handleKeyDown}
         />
         <ul className="options-list" style={{ display: displayStyle }}>
-          {selectedCity.map((city) => (
+          {selectedCities.map((city) => (
             <NavLink
               type="button"
               key={uuidv4()}
