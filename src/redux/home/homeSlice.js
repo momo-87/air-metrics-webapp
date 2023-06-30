@@ -228,6 +228,20 @@ export const getNearestCityData = createAsyncThunk('data/getNearestCityData', as
   }
 });
 
+export const getSelectedCity = createAsyncThunk('home/getUserInputData', async (userInput, { rejectWithValue }) => {
+  try {
+    let cities = [];
+    if (userInput) {
+      const URL = `http://api.openweathermap.org/geo/1.0/direct?q=${userInput}&limit=5&appid=c435ab8224ec4a9e751a3469cb551dde`;
+      const resp = await axios.get(URL);
+      cities = resp.data;
+    }
+    return cities;
+  } catch (error) {
+    return rejectWithValue('City not supported');
+  }
+});
+
 const initialState = {
   city: {
     // country: 'Cameroon',
@@ -426,6 +440,8 @@ const initialState = {
   isLoading: true,
   error: undefined,
   clickedCity: {},
+  // userInput: '',
+  selectedCity: [],
 };
 
 const homeSlice = createSlice({
@@ -435,6 +451,9 @@ const homeSlice = createSlice({
     addClickedCity: (state, action) => {
       state.clickedCity = action.payload;
     },
+    // getUserInput: (state, action) => {
+    //   if (action.payload && action.payload !== '') state.userInput = action.payload;
+    // },
   },
   extraReducers(builder) {
     builder
@@ -451,7 +470,20 @@ const homeSlice = createSlice({
       .addCase(getNearestCityData.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+      // .addCase(getUserInputData.pending, (state) => {
+      //   state.isLoading = true;
+      //   state.error = undefined;
+      // })
+      .addCase(getSelectedCity.fulfilled, (state, action) => {
+        state.selectedCity = [...action.payload];
+        // state.isLoading = false;
+        // state.error = undefined;
       });
+    // .addCase(getUserInputData.rejected, (state, action) => {
+    //   state.isLoading = false;
+    //   state.error = action.payload;
+    // });
   //   .addCase(getOtherCitiesData.pending, (state) => {
   //     state.isLoading = true;
   //     state.error = undefined;

@@ -24,14 +24,30 @@
         width: 100%;
       }
 
+      ul.options-list {
+        position: absolute;
+        top: 50px;
+        width: 40%;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        background-color: #F1F6F9;
+        padding-left: 5%;
+        font-weight: bold;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 0.9rem;
+
+        a {
+          color:  #212A3E;
+        }
+      }
+
       .search-icon {
         position: absolute;
         right: 18%;
         color: #212A3E;
       }
     }
-
-
 
     input::placeholder {
       padding: 5px;
