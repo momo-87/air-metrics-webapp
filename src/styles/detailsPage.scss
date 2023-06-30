@@ -1,0 +1,146 @@
+@media only screen and (min-width: 220px) {
+  p.no-data {
+    font-size: 1.2rem;
+    margin-top: 30px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  div.details-section {
+    margin-top: 20px;
+    display: flex;
+    padding-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+    color: #212a3e;
+
+    div.weather-infos-box {
+      width: 60%;
+
+      div.weather-icon-box {
+        width: 50%;
+        margin: 0 25% 0 25%;
+
+        img {
+          width: 80%;
+        }
+      }
+
+      div.weather-data-box {
+        display: flex;
+        justify-content: space-around;
+
+        div.hu-box {
+          display: flex;
+          align-items: center;
+          gap: 3px;
+
+          img {
+            width: 10px;
+          }
+        }
+      }
+    }
+
+    div.air-data-box {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      h1 {
+        font-size: 1rem;
+      }
+
+      p:nth-child(2) {
+        width: 50%;
+        margin-top: 20px;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      p:nth-child(3) {
+        display: flex;
+        flex-direction: column;
+        font-size: 1rem;
+        font-weight: bold;
+        margin-top: 5px;
+        width: 90%;
+        border-radius: 5px;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+
+        span.pollutant {
+          font-size: 0.8rem;
+        }
+      }
+
+      p.Good:nth-child(2) {
+        color: #0c7c0e;
+      }
+
+      p.Good:nth-child(3) {
+        color: #0c7c0e;
+        border: 1px solid #0c7c0e;
+      }
+
+      p.Fair:nth-child(2) {
+        color: #556344;
+      }
+
+      p.Fair:nth-child(3) {
+        color: #556344;
+        border: 1px solid #556344;
+      }
+
+      p.Moderate:nth-child(2) {
+        color: #636262;
+      }
+
+      p.Moderate:nth-child(3) {
+        color: #636262;
+        border: 1px solid #636262;
+      }
+
+      p.Poor:nth-child(2) {
+        color: #ae4021;
+      }
+
+      p.Poor:nth-child(3) {
+        color: #ae4021;
+        border: 1px solid #ae4021;
+      }
+
+      p.Very:nth-child(2) {
+        color: #c73913;
+      }
+
+      p.Very:nth-child(3) {
+        color: #c73913;
+        border: 1px solid #c73913;
+      }
+    }
+  }
+
+  div.other-pollutants {
+    color: #212a3e;
+
+    h2 {
+      font-size: 1rem;
+      text-align: center;
+      margin-bottom: 10px;
+      color: #f1f6f9;
+      background-color: #212a3e;
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    p.pollutant {
+      margin-bottom: 10px;
+      font-size: 1rem;
+      font-weight: bold;
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+      padding: 5px 5% 5px 5%;
+    }
+  }
+}
