@@ -90,42 +90,42 @@ const DetailsPage = () => {
         <hr />
         <div className="other-pollutants">
           <h2>Others Pollutant Concentrations</h2>
-          <p>
+          <p className="pollutant">
             CO:
             {' '}
             {clickedCity.pollution.co}
             μg/m
             <sup>3</sup>
           </p>
-          <p>
+          <p className="pollutant">
             NO:
             {' '}
             {clickedCity.pollution.no}
             μg/m
             <sup>3</sup>
           </p>
-          <p>
+          <p className="pollutant">
             NO2:
             {' '}
             {clickedCity.pollution.no2}
             μg/m
             <sup>3</sup>
           </p>
-          <p>
+          <p className="pollutant">
             O3:
             {' '}
             {clickedCity.pollution.o3}
             μg/m
             <sup>3</sup>
           </p>
-          <p>
+          <p className="pollutant">
             SO2:
             {' '}
             {clickedCity.pollution.so2}
             μg/m
             <sup>3</sup>
           </p>
-          <p>
+          <p className="pollutant">
             NH3:
             {' '}
             {clickedCity.pollution.nh3}

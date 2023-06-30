@@ -9,8 +9,9 @@ const NearestCity = () => {
       {isLoading && (
       <div>
         is Loading
-        <div className="progress">
-          <div className="inner">{}</div>
+        <div className="lds-ripple">
+          <div>{}</div>
+          <div>{}</div>
         </div>
       </div>
       )}

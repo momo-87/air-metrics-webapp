@@ -1,5 +1,4 @@
 @media only screen and (min-width: 220px) {
-
   p.no-data {
     font-size: 1.2rem;
     margin-top: 30px;
@@ -13,7 +12,7 @@
     padding-bottom: 20px;
     justify-content: center;
     align-items: center;
-    color: #212A3E;
+    color: #212a3e;
 
     div.weather-infos-box {
       width: 60%;
@@ -36,7 +35,7 @@
           align-items: center;
           gap: 3px;
 
-          img{
+          img {
             width: 10px;
           }
         }
@@ -71,19 +70,19 @@
         width: 90%;
         border-radius: 5px;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
-    
+
         span.pollutant {
           font-size: 0.8rem;
         }
       }
 
       p.Good:nth-child(2) {
-        color: #0C7C0E ;
+        color: #0c7c0e;
       }
 
       p.Good:nth-child(3) {
-        color: #0C7C0E;
-        border: 1px solid #0C7C0E;
+        color: #0c7c0e;
+        border: 1px solid #0c7c0e;
       }
 
       p.Fair:nth-child(2) {
@@ -104,7 +103,6 @@
         border: 1px solid #636262;
       }
 
-
       p.Poor:nth-child(2) {
         color: #ae4021;
       }
@@ -115,31 +113,29 @@
       }
 
       p.Very:nth-child(2) {
-        color: #C73913;
+        color: #c73913;
       }
 
       p.Very:nth-child(3) {
-        color: #C73913;
-        border: 1px solid #C73913;
+        color: #c73913;
+        border: 1px solid #c73913;
       }
-
-
     }
   }
 
   div.other-pollutants {
-    color: #212A3E;
+    color: #212a3e;
 
     h2 {
       font-size: 1rem;
       text-align: center;
       margin-bottom: 10px;
-      color: #F1F6F9;
-      background-color: #212A3E;
+      color: #f1f6f9;
+      background-color: #212a3e;
       box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
     }
 
-    p {
+    p.pollutant {
       margin-bottom: 10px;
       font-size: 1rem;
       font-weight: bold;

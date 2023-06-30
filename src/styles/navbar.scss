@@ -1,8 +1,7 @@
 @media only screen and (min-width: 220px) {
-
   nav {
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
-    background-color:#212A3E;
+    background-color: #212a3e;
     height: 50px;
     display: flex;
     align-items: center;
@@ -29,7 +28,7 @@
         top: 50px;
         width: 40%;
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-        background-color: #F1F6F9;
+        background-color: #f1f6f9;
         padding-left: 5%;
         font-weight: bold;
         display: flex;
@@ -38,14 +37,14 @@
         font-size: 0.9rem;
 
         a {
-          color:  #212A3E;
+          color: #212a3e;
         }
       }
 
       .search-icon {
         position: absolute;
         right: 18%;
-        color: #212A3E;
+        color: #212a3e;
       }
     }
 
@@ -54,16 +53,15 @@
     }
 
     .home-icon {
-      color: #F1F6F9;
+      color: #f1f6f9;
       width: 25px;
       height: 25px;
       margin-left: 5px;
-      box-shadow: 2px 2px 2px #F1F6F9;
-      border: 1px solid #F1F6F9;
+      box-shadow: 2px 2px 2px #f1f6f9;
+      border: 1px solid #f1f6f9;
       border-radius: 3px;
     }
 
-    
     // ul {
     //   display: flex;
     //   height: 60px;
