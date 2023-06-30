@@ -31,105 +31,110 @@ const DetailsPage = () => {
 
   return (
     <>
-      <div className="details-section">
-        <div className="weather-infos-box">
-          <div className="weather-icon-box">
-            <img src={`https://download.spinetix.com/content/widgets/icons/weather/${clickedCity.weather.icon}.png`} alt="weather icon" />
+      {Object.keys(clickedCity).length === 0 && <p className="no-data">Data Not Found</p>}
+      {Object.keys(clickedCity).length !== 0 && (
+      <>
+        <div className="details-section">
+          <div className="weather-infos-box">
+            <div className="weather-icon-box">
+              <img src={`https://download.spinetix.com/content/widgets/icons/weather/${clickedCity.weather.icon}.png`} alt="weather icon" />
+            </div>
+            <div className="weather-data-box">
+              <div className="temp-box">
+                {clickedCity.weather.temp}
+                °
+              </div>
+              <div className="hu-box">
+                <img src={waterDrop} alt="water drop" />
+                {clickedCity.weather.hu}
+                %
+              </div>
+              <div className="ws-box">
+                ws:
+                {' '}
+                {clickedCity.weather.ws}
+                m/s
+              </div>
+            </div>
           </div>
-          <div className="weather-data-box">
-            <div className="temp-box">
-              {clickedCity.weather.temp}
-              °
-            </div>
-            <div className="hu-box">
-              <img src={waterDrop} alt="water drop" />
-              {clickedCity.weather.hu}
-              %
-            </div>
-            <div className="ws-box">
-              ws:
+          <div className="air-data-box">
+            <h1 className="city">
+              {clickedCity.city}
               {' '}
-              {clickedCity.weather.ws}
-              m/s
-            </div>
+              Air Quality Index
+            </h1>
+            <p className={pollutionLevel(clickedCity.aqi)}>
+              {clickedCity.aqi}
+            </p>
+            <p
+              className={pollutionLevel(clickedCity.aqi)}
+            >
+              {pollutionLevel(clickedCity.aqi)}
+              <span className="pollutant">
+                PM2.5:
+                {' '}
+                {clickedCity.pollution.pm2_5}
+                μg/m
+                <sup>3</sup>
+              </span>
+              <span className="pollutant">
+                PM10:
+                {' '}
+                {clickedCity.pollution.pm10}
+                μg/m
+                <sup>3</sup>
+              </span>
+            </p>
           </div>
         </div>
-        <div className="air-data-box">
-          <h1 className="city">
-            {clickedCity.city}
+        <hr />
+        <div className="other-pollutants">
+          <h2>Others Pollutant Concentrations</h2>
+          <p>
+            CO:
             {' '}
-            Air Quality Index
-          </h1>
-          <p className={pollutionLevel(clickedCity.aqi)}>
-            {clickedCity.aqi}
+            {clickedCity.pollution.co}
+            μg/m
+            <sup>3</sup>
           </p>
-          <p
-            className={pollutionLevel(clickedCity.aqi)}
-          >
-            {pollutionLevel(clickedCity.aqi)}
-            <span className="pollutant">
-              PM2.5:
-              {' '}
-              {clickedCity.pollution.pm2_5}
-              μg/m
-              <sup>3</sup>
-            </span>
-            <span className="pollutant">
-              PM10:
-              {' '}
-              {clickedCity.pollution.pm10}
-              μg/m
-              <sup>3</sup>
-            </span>
+          <p>
+            NO:
+            {' '}
+            {clickedCity.pollution.no}
+            μg/m
+            <sup>3</sup>
+          </p>
+          <p>
+            NO2:
+            {' '}
+            {clickedCity.pollution.no2}
+            μg/m
+            <sup>3</sup>
+          </p>
+          <p>
+            O3:
+            {' '}
+            {clickedCity.pollution.o3}
+            μg/m
+            <sup>3</sup>
+          </p>
+          <p>
+            SO2:
+            {' '}
+            {clickedCity.pollution.so2}
+            μg/m
+            <sup>3</sup>
+          </p>
+          <p>
+            NH3:
+            {' '}
+            {clickedCity.pollution.nh3}
+            μg/m
+            <sup>3</sup>
           </p>
         </div>
-      </div>
-      <hr />
-      <div className="other-pollutants">
-        <h2>Others Pollutant Concentrations</h2>
-        <p>
-          CO:
-          {' '}
-          {clickedCity.pollution.co}
-          μg/m
-          <sup>3</sup>
-        </p>
-        <p>
-          NO:
-          {' '}
-          {clickedCity.pollution.no}
-          μg/m
-          <sup>3</sup>
-        </p>
-        <p>
-          NO2:
-          {' '}
-          {clickedCity.pollution.no2}
-          μg/m
-          <sup>3</sup>
-        </p>
-        <p>
-          O3:
-          {' '}
-          {clickedCity.pollution.o3}
-          μg/m
-          <sup>3</sup>
-        </p>
-        <p>
-          SO2:
-          {' '}
-          {clickedCity.pollution.so2}
-          μg/m
-          <sup>3</sup>
-        </p>
-        <p>
-          NH3:
-          {' '}
-          {clickedCity.pollution.nh3}
-          μg/m
-          <sup>3</sup>
-        </p>
-      </div>
+      </>
+      )}
     </>
   );
 };

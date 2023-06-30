@@ -1,5 +1,12 @@
 @media only screen and (min-width: 220px) {
 
+  p.no-data {
+    font-size: 1.2rem;
+    margin-top: 30px;
+    text-align: center;
+    font-weight: bold;
+  }
+
   div.details-section {
     margin-top: 20px;
     display: flex;
