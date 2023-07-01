@@ -6,13 +6,13 @@ import { useSelector } from 'react-redux';
 
 const Home = () => {
   const {
-    city, selectedCity, isLoading, error,
+    city, selectedCity, isLoading, error, otherCities,
   } = useSelector(getData);
   return (
     <div>
       {selectedCity && Object.keys(selectedCity).length !== 0 ? <SelectedCity />
         : <NearestCity city={city} isLoading={isLoading} error={error} /> }
-      <OtherCitiesList />
+      <OtherCitiesList otherCities={otherCities} isLoading={isLoading} error={error} />
     </div>
   );
 };

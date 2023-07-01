@@ -1,10 +1,7 @@
-// import { useSelector } from 'react-redux';
-// import { getData } from 'redux/home/homeSlice';
 import PropTypes from 'prop-types';
 import waterDrop from 'assets/icons/drop.png';
 
 const NearestCity = ({ city, isLoading, error }) => (
-  // const { city, isLoading, error } = useSelector(getData);
   <div className="nearest-city-box">
     {isLoading && (
       <div>
@@ -93,7 +90,8 @@ NearestCity.propTypes = {
       pm10: PropTypes.number,
     }),
   }).isRequired,
-  isLoading: PropTypes.bool.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  isLoading: PropTypes.bool,
   // eslint-disable-next-line react/require-default-props
   error: PropTypes.string,
 };

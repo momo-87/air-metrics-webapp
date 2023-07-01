@@ -1,11 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { BsArrowRightCircle } from 'react-icons/bs';
+import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
-import { getData, addClickedCity } from 'redux/home/homeSlice';
+import { addClickedCity } from 'redux/home/homeSlice';
 
-const OtherCitiesList = () => {
-  const { otherCities, isLoading, error } = useSelector(getData);
+const OtherCitiesList = ({ otherCities, isLoading, error }) => {
+  // const { otherCities, isLoading, error } = useSelector(getData);
   const dispatch = useDispatch();
   const handleClick = (city) => dispatch(addClickedCity(city));
   return (
@@ -64,3 +65,12 @@ const OtherCitiesList = () => {
 };
 
 export default OtherCitiesList;
+
+OtherCitiesList.propTypes = {
+  // eslint-disable-next-line react/require-default-props
+  otherCities: PropTypes.arrayOf(PropTypes.shape({})),
+  // eslint-disable-next-line react/require-default-props
+  isLoading: PropTypes.bool,
+  // eslint-disable-next-line react/require-default-props
+  error: PropTypes.string,
+};
