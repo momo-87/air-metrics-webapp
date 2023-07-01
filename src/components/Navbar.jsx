@@ -64,7 +64,7 @@ const NavBar = () => {
           onKeyDown={handleKeyDown}
         />
         <ul className="options-list" style={{ display: displayStyle }}>
-          {selectedCities.map((city) => (
+          {selectedCities && selectedCities.map((city) => (
             <NavLink
               type="button"
               key={uuidv4()}

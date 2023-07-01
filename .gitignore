@@ -26,3 +26,4 @@ yarn-error.log*
 linters.txt
 
 react.txt
+.vercel

@@ -1,12 +1,9 @@
-import { useSelector } from 'react-redux';
-import { getData } from 'redux/home/homeSlice';
+import PropTypes from 'prop-types';
 import waterDrop from 'assets/icons/drop.png';
 
-const NearestCity = () => {
-  const { city, isLoading, error } = useSelector(getData);
-  return (
-    <div className="nearest-city-box">
-      {isLoading && (
+const NearestCity = ({ city, isLoading, error }) => (
+  <div className="nearest-city-box">
+    {isLoading && (
       <div>
         is Loading
         <div className="lds-ripple">
@@ -14,9 +11,9 @@ const NearestCity = () => {
           <div>{}</div>
         </div>
       </div>
-      )}
-      {error && <p>{error}</p>}
-      {(!isLoading && !error)
+    )}
+    {error && <p>{error}</p>}
+    {(!isLoading && !error && city && Object.keys(city).length !== 0)
             && (
             <>
               <div className="weather-infos-box">
@@ -72,8 +69,29 @@ const NearestCity = () => {
               </div>
             </>
             )}
-    </div>
-  );
-};
+  </div>
+);
 
 export default NearestCity;
+
+NearestCity.propTypes = {
+  city: PropTypes.shape({
+    city: PropTypes.string,
+    pollutionLevel: PropTypes.string,
+    aqi: PropTypes.number,
+    weather: PropTypes.shape({
+      icon: PropTypes.string,
+      temp: PropTypes.number,
+      hu: PropTypes.number,
+      ws: PropTypes.number,
+    }),
+    pollution: PropTypes.shape({
+      pm2_5: PropTypes.number,
+      pm10: PropTypes.number,
+    }),
+  }).isRequired,
+  // eslint-disable-next-line react/require-default-props
+  isLoading: PropTypes.bool,
+  // eslint-disable-next-line react/require-default-props
+  error: PropTypes.string,
+};

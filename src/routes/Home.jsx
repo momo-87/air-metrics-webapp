@@ -5,11 +5,14 @@ import { getData } from 'redux/home/homeSlice';
 import { useSelector } from 'react-redux';
 
 const Home = () => {
-  const { selectedCity } = useSelector(getData);
+  const {
+    city, selectedCity, isLoading, error, otherCities,
+  } = useSelector(getData);
   return (
     <div>
-      {Object.keys(selectedCity).length !== 0 ? <SelectedCity /> : <NearestCity /> }
-      <OtherCitiesList />
+      {selectedCity && Object.keys(selectedCity).length !== 0 ? <SelectedCity />
+        : <NearestCity city={city} isLoading={isLoading} error={error} /> }
+      <OtherCitiesList otherCities={otherCities} isLoading={isLoading} error={error} />
     </div>
   );
 };
