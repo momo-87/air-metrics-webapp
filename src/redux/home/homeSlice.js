@@ -1,14 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const NEAREST_CITY_URL = {
-  IDENTIFICATION_URL: 'https://api.ipgeolocation.io/ipgeo?&apiKey=8f0321e938094cc49488159b0f75cc88',
-  WEATHER_URL: 'https: //api.openweathermap.org/data/2.5/weather?lat=3.8689867&lon=11.5213344&appid=c435ab8224ec4a9e751a3469cb551dde',
-
-};
 export const getNearestCityData = createAsyncThunk('home/getNearestCityData', async (_, { rejectWithValue }) => {
   try {
-    const idendificationResp = await axios.get(NEAREST_CITY_URL.IDENTIFICATION_URL);
+    const idendificationResp = await axios.get('https://api.ipgeolocation.io/ipgeo?&apiKey=8f0321e938094cc49488159b0f75cc88');
     const country = idendificationResp.data.country_name;
     const state = idendificationResp.data.state_prov;
     const cityName = idendificationResp.data.city;

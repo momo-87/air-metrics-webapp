@@ -10,7 +10,7 @@ const OtherCitiesList = () => {
   const handleClick = (city) => dispatch(addClickedCity(city));
   return (
     <div className="other-cities-section">
-      {(!isLoading && !error)
+      {(!isLoading && !error && otherCities && otherCities.length !== 0)
             && (
             <>
               {otherCities.map((cityItem) => (

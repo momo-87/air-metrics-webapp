@@ -8,7 +8,7 @@ const Home = () => {
   const { selectedCity } = useSelector(getData);
   return (
     <div>
-      {Object.keys(selectedCity).length !== 0 ? <SelectedCity /> : <NearestCity /> }
+      {selectedCity && Object.keys(selectedCity).length !== 0 ? <SelectedCity /> : <NearestCity /> }
       <OtherCitiesList />
     </div>
   );

@@ -16,7 +16,7 @@ const NearestCity = () => {
       </div>
       )}
       {error && <p>{error}</p>}
-      {(!isLoading && !error)
+      {(!isLoading && !error && city && city.length !== 0)
             && (
             <>
               <div className="weather-infos-box">
