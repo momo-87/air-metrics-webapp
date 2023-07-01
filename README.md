@@ -66,7 +66,7 @@
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🚀 Live Demo <a name="live-demo"></a>
->[Live Demo](https://math-magician-7koh.onrender.com)
+>[Live Demo](https://airmetrics.onrender.com)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
