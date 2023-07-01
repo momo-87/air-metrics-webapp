@@ -15,7 +15,7 @@ const SelectedCity = () => {
       </div>
       )}
       {error && <p>{error}</p>}
-      {(!isLoading && !error && Object.keys(selectedCity).length !== 0)
+      {(!isLoading && !error && selectedCity && Object.keys(selectedCity).length !== 0)
             && (
             <>
               <div className="weather-infos-box">
