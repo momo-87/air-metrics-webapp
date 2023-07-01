@@ -1,7 +1,22 @@
+@font-face {
+  font-family: lato;
+  src: url('../assets/fonts/lato/Lato-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  src: url('../assets/fonts/lato/Lato-Regular.ttf');
+}
+
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+body {
+  font-family: 'Gill Sans', lato, 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 ul {
