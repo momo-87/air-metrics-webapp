@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
+import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import store from 'redux/store';
 import NearestCity from 'components/NearestCity';
 
-// eslint-disable-next-line react/prop-types
 const AllTheProviders = ({ children }) => (
   <Provider store={store}>
     {children}
@@ -40,3 +40,7 @@ test('should render Nearest city component', async () => {
   />, { wrapper: AllTheProviders });
   expect(screen.getAllByText(/air/i).length).toBe(1);
 });
+
+AllTheProviders.propTypes = {
+  children: PropTypes.string.isRequired,
+};
