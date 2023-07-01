@@ -31,8 +31,8 @@ const DetailsPage = () => {
 
   return (
     <>
-      {Object.keys(clickedCity).length === 0 && <p className="no-data">Data Not Found</p>}
-      {Object.keys(clickedCity).length !== 0 && (
+      {clickedCity && Object.keys(clickedCity).length === 0 && <p className="no-data">Data Not Found</p>}
+      {clickedCity && Object.keys(clickedCity).length !== 0 && (
       <>
         <div className="details-section">
           <div className="weather-infos-box">
