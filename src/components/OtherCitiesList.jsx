@@ -6,7 +6,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { addClickedCity } from 'redux/home/homeSlice';
 
 const OtherCitiesList = ({ otherCities, isLoading, error }) => {
-  // const { otherCities, isLoading, error } = useSelector(getData);
   const dispatch = useDispatch();
   const handleClick = (city) => dispatch(addClickedCity(city));
   return (
