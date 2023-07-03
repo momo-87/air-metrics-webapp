@@ -19,6 +19,9 @@ const NavBar = () => {
       setInputValue(e.target.value);
       setDisplayStyle('flex');
     }
+    if (e.target.value.length === 0) {
+      setInputValue('');
+    }
   };
 
   // Dispatch getSelectedCity to get the selected city from API
@@ -36,21 +39,20 @@ const NavBar = () => {
   // Handle onBlur event (when the input loses focus)
   const handleInputBlur = () => {
     dispatch(getSelectedCity(inputValue));
-    if (selectedCities.length > 0) {
+    if (selectedCities && selectedCities.length > 0) {
       const { lat, lon, name } = selectedCities[0];
       dispatch(getSelectedCityData({ lat, lon, name }));
     }
     // Remode the option list
     setDisplayStyle('none');
-    // console.log(lat, lon, name);
   };
 
   // Delete the last input letter by pressing Backspace
-  const handleKeyDown = (event) => {
-    if (event.key === 'Backspace' && inputValue.length === 1) {
-      setInputValue('');
-    }
-  };
+  // const handleKeyDown = (event) => {
+  //   if ((event.key === 'Backspace' || event.key === 'Delete') && inputValue.length === 1) {
+  //     setInputValue('');
+  //   }
+  // };
   return (
     <nav>
       <img src={logo} alt="logo" />
@@ -59,9 +61,9 @@ const NavBar = () => {
           type="text"
           placeholder="Enter Location"
           value={inputValue}
-          onChange={handleInput}
+          onInput={handleInput}
           onBlur={handleInputBlur}
-          onKeyDown={handleKeyDown}
+          // onKeyDown={handleKeyDown}
         />
         <ul className="options-list" style={{ display: displayStyle }}>
           {selectedCities && selectedCities.map((city) => (
