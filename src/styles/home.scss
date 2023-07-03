@@ -31,6 +31,52 @@ ul li a {
 }
 
 @media only screen and (min-width: 220px) {
+  
+  div.search-box {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    margin-left: 20%;
+    margin-top: 10px;
+
+
+    input {
+      height: 30px;
+      padding: 5px;
+      border-radius: 5px;
+      width: 100%;
+    }
+
+    ul.options-list {
+      position: absolute;
+      top: 90px;
+      width: 40%;
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+      background-color: #f1f6f9;
+      padding-left: 5%;
+      font-weight: bold;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      font-size: 0.9rem;
+      border-radius: 5px;
+
+      a {
+        color: #212a3e;
+      }
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 18%;
+      color: #212a3e;
+    }
+
+    input::placeholder {
+      padding: 5px;
+    }
+  }
+
   div.nearest-city-box {
     margin-top: 20px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
