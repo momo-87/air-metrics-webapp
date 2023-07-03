@@ -7,6 +7,17 @@
   }
 
   div.details-section {
+
+    .back-arrow-link {
+      margin-left: -70%;
+      
+      .back-arrow {
+        font-size: 1.2rem;
+        color: #212a3e;
+    } 
+    }
+
+
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -153,6 +164,16 @@
 @media only screen and (min-width: 320px) {
 
   div.details-section {
+
+    .back-arrow-link {
+      top: 70px;
+      margin-left: -80%;
+      position: absolute;
+      
+      .back-arrow {
+        font-size: 1.5rem;
+      } 
+    }
     flex-direction: row;
     justify-content: space-around;
 
@@ -183,6 +204,13 @@
 @media only screen and (min-width: 768px) {
 
   div.details-section {
+
+    .back-arrow-link {
+      
+      .back-arrow {
+        font-size: 2rem;
+      } 
+    }
 
     div.weather-infos-box {
       width: 50%;
@@ -239,9 +267,16 @@
 
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1440px) {
 
   div.details-section {
+
+    .back-arrow-link {
+      
+      .back-arrow {
+        font-size: 2.5rem;
+      } 
+    }
 
     div.weather-infos-box {
       width: 30%;
