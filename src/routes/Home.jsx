@@ -10,7 +10,7 @@ const Home = () => {
     city, selectedCity, isLoading, error, otherCities,
   } = useSelector(getData);
   return (
-    <div>
+    <div className="home">
       <SearchBar />
       {selectedCity && Object.keys(selectedCity).length !== 0 ? <SelectedCity />
         : <NearestCity city={city} isLoading={isLoading} error={error} /> }

@@ -89,7 +89,7 @@ const DetailsPage = () => {
         </div>
         <hr />
         <div className="other-pollutants">
-          <h2>Others Pollutant Concentrations</h2>
+          <h2>Other Pollutant Concentrations</h2>
           <p className="pollutant">
             CO:
             {' '}
