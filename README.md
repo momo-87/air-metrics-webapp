@@ -1,6 +1,9 @@
 <a name="readme-top"></a>
-<div align="center">  
-  <h2><b>Air Metrics WebApp</b></h2>
+<div align="center">
+  <img src="./photo.png" alt="photo" width="80"/>
+  <img src="./intro.png" alt="logo"/>
+  <br/>  
+  <h2><b>Air Metrics Web App</b></h2>
 </div>
 
 # 📗 Table of Contents
@@ -27,16 +30,15 @@
 
 <br>
 
-# 📖 Math Magicians <a name="API-based webapp"></a>
->"Air Metrics" a Single Page App (SPA) that allows users to:
->- Display air pollution data.
->- Weather Data.
+# 📖 Air Metrics Web APP <a name="API-based webapp"></a>
+>Air Metrics is a React Redux web application that displays air quality data. The data are provided by external API (AirVisualAPI: https://api-docs.iqair.com/) and the user can display air quality and weather data from different areas around the world by using a search engine.
 <br>
 
 ## 🛠 Built With <a name="built-with"></a>
 - React
 - Redux
 - SASS
+- Jest for testing
 - Linters
 
 ### Tech Stack <a name="tech-stack"></a>
@@ -45,9 +47,9 @@
   <ul>
     <li><a href="https://create-react-app.dev/docs/getting-started/">React</a></li>
     <li><a href="https://redux.js.org/">Redux</a></li>
-    <!-- <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS">CSS</a></li>
-    <li><a href="https://webpack.js.org/guides/getting-started/#basic-setup">Webpack</a></li>
-    <li><a href="https://jestjs.io/docs/getting-started">Jest</a></li> -->
+    <li><a href="https://sass-lang.com/">SASS</a></li>
+    <li><a href="https://jestjs.io/docs/getting-started">Jest</a></li>
+    <!-- <li><a href="https://jestjs.io/docs/getting-started">Jest</a></li> -->
   </ul>
 </details>
 <details>
@@ -63,10 +65,12 @@
 ### Key Features <a name="key-features"></a>
 - A home page showing User city data and closest cities data
 - Details page showing details informations about a given location
+- Search engine.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 >[Live Demo](https://airmetrics.onrender.com)
+
 > [Video Presentation](https://www.loom.com/share/2ad53b4776e94f43bb9c464cf7a63c5e?sid=014845e4-9b2d-4449-9e89-59e30a0f64d4)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -111,7 +115,8 @@
 
 
 ## 🔭 Future Features <a name="future-features"></a>
-- [ ] Testing
+- [ ] Display Forecast data
+- [ ] Display Historical data
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🤝 Contributing <a name="contributing"></a>
