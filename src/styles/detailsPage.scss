@@ -17,12 +17,11 @@
 
     .back-arrow-link {
       margin-left: -70%;
-      
+
       .back-arrow {
         font-size: 1.2rem;
         color: #212a3e;
-    } 
-
+      }
     }
 
     div.weather-infos-box {
@@ -162,18 +161,17 @@
 }
 
 @media only screen and (min-width: 320px) {
-
   div.details-section {
-
     .back-arrow-link {
       top: 70px;
       margin-left: -80%;
       position: absolute;
-      
+
       .back-arrow {
         font-size: 1.5rem;
-      } 
+      }
     }
+
     flex-direction: row;
     justify-content: space-around;
 
@@ -190,7 +188,6 @@
       }
 
       font-size: 0.8rem;
-
     }
 
     div.air-data-box {
@@ -201,19 +198,14 @@
   div.other-pollutants {
     padding-bottom: 125px;
   }
-
 }
 
-
 @media only screen and (min-width: 768px) {
-
   div.details-section {
-
     .back-arrow-link {
-      
       .back-arrow {
         font-size: 2rem;
-      } 
+      }
     }
 
     div.weather-infos-box {
@@ -233,7 +225,6 @@
       }
 
       p:nth-child(3) {
-
         span.pollutant {
           font-size: 1rem;
         }
@@ -242,7 +233,6 @@
   }
 
   div.other-pollutants {
-
     h2 {
       font-size: 1.2rem;
     }
@@ -250,14 +240,11 @@
     p.pollutant {
       font-size: 1rem;
     }
-
   }
 }
 
 @media only screen and (min-width: 1024px) {
-
   div.details-section {
-
     div.weather-infos-box {
       width: 40%;
     }
@@ -266,18 +253,14 @@
       width: 25%;
     }
   }
-
 }
 
 @media only screen and (min-width: 1440px) {
-
   div.details-section {
-
     .back-arrow-link {
-      
       .back-arrow {
         font-size: 2.5rem;
-      } 
+      }
     }
 
     div.weather-infos-box {
@@ -292,6 +275,4 @@
       width: 20%;
     }
   }
-
 }
-

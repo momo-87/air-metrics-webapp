@@ -31,14 +31,12 @@ ul li a {
 }
 
 @media only screen and (min-width: 220px) {
-  
   div.search-box {
     display: flex;
     align-items: center;
     width: 90%;
     margin-left: 5%;
     margin-top: 10px;
-
 
     input {
       height: 30px;
@@ -179,7 +177,6 @@ ul li a {
       align-items: center;
       text-align: center;
 
-
       h1 {
         font-size: 1rem;
       }
@@ -257,7 +254,7 @@ ul li a {
     display: flex;
     flex-direction: column;
     margin-top: 5px;
-    padding-bottom: 50px;
+    padding-bottom: 150px;
 
     div.city-item-box {
       width: 98%;
@@ -325,6 +322,9 @@ ul li a {
   }
 
   div.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     background-color: #212a3e;
     color: #f1f6f9;
     display: flex;
@@ -335,14 +335,13 @@ ul li a {
     padding-top: 5px;
     padding-bottom: 10px;
 
-    p:nth-child(2) {
-      color: #FBAD95;
+    p.email {
+      color: #fbad95;
     }
   }
 }
 
 @media only screen and (min-width: 320px) {
-  
   div.search-box {
     width: 70%;
     margin-left: 25%;
@@ -350,7 +349,6 @@ ul li a {
 
   div.nearest-city-box {
     flex-direction: row;
-
 
     div.weather-infos-box {
       width: 60%;
@@ -363,7 +361,6 @@ ul li a {
           width: 80%;
         }
       }
-
     }
 
     div.air-data-box {
@@ -379,7 +376,6 @@ ul li a {
 }
 
 @media only screen and (min-width: 768px) {
-
   div.search-box {
     width: 50%;
     margin-left: 45%;
@@ -406,6 +402,9 @@ ul li a {
         }
       }
 
+      div.weather-data-box {
+        font-size: 1rem;
+      }
     }
 
     div.air-data-box {
@@ -417,9 +416,8 @@ ul li a {
       }
 
       p:nth-child(3) {
-
         span.pollutant {
-          font-size: 1  rem;
+          font-size: 1rem;
         }
       }
     }
@@ -462,7 +460,6 @@ ul li a {
       }
 
       div.aqi-box {
-
         p {
           font-size: 1rem;
         }
@@ -478,7 +475,6 @@ ul li a {
 }
 
 @media only screen and (min-width: 1024px) {
-
   div.search-box {
     width: 30%;
     margin-left: 65%;
@@ -489,7 +485,6 @@ ul li a {
   }
 
   div.nearest-city-box {
-    
     div.weather-infos-box {
       width: 40%;
       font-weight: bold;
@@ -502,7 +497,6 @@ ul li a {
           width: 80%;
         }
       }
-
     }
 
     div.air-data-box {
@@ -529,32 +523,27 @@ ul li a {
     grid-template-columns: 25% 25% 25% 25%;
 
     div.city-item-box {
-
       .next-arrow {
         margin-top: 30px;
       }
 
       div.weather-box {
-
         div.weather-details {
           font-size: 0.9rem;
           width: 90%;
         }
       }
-
     }
   }
 }
 
 @media only screen and (min-width: 1440px) {
-
   div.search-box {
     width: 20%;
     margin-left: 75%;
   }
 
   div.nearest-city-box {
-    
     div.weather-infos-box {
       width: 30%;
     }
@@ -565,18 +554,13 @@ ul li a {
   }
 
   div.other-cities-section {
-
     div.city-item-box {
-
       div.weather-box {
-
         div.weather-details {
           font-size: 1rem;
           width: 70%;
         }
       }
-
     }
   }
 }
-
