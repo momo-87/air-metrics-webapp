@@ -34,7 +34,7 @@
 <br>
 
 # 📖 Air Metrics Web APP <a name="API-based webapp"></a>
->Air Metrics is a React Redux web application that displays air quality data. The data are provided by external API (AirVisualAPI: https://api-docs.iqair.com/) and the user can display air quality and weather data from different areas around the world by using a search engine.
+>Air Metrics is a React Redux web application that displays air quality data. The data are provided by external API and the user can display air quality and weather data from different areas around the world by using a search engine.
 <br>
 
 ## 🛠 Built With <a name="built-with"></a>
