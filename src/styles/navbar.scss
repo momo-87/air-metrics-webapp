@@ -9,57 +9,53 @@
     padding-right: 5%;
 
     img {
-      width: 40%;
-    }
-
-    div.search-box {
-      display: flex;
-      align-items: center;
-
-      input {
-        height: 30px;
-        padding: 5px;
-        border-radius: 5px;
-        width: 100%;
-      }
-
-      ul.options-list {
-        position: absolute;
-        top: 50px;
-        width: 40%;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-        background-color: #f1f6f9;
-        padding-left: 5%;
-        font-weight: bold;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        font-size: 0.9rem;
-
-        a {
-          color: #212a3e;
-        }
-      }
-
-      .search-icon {
-        position: absolute;
-        right: 18%;
-        color: #212a3e;
-      }
-    }
-
-    input::placeholder {
-      padding: 5px;
+      width: 50%;
+      margin-left: 2%;
     }
 
     .home-icon {
       color: #f1f6f9;
       width: 25px;
       height: 25px;
-      margin-left: 5px;
       box-shadow: 2px 2px 2px #f1f6f9;
       border: 1px solid #f1f6f9;
       border-radius: 3px;
+    }
+  }
+}
+
+@media only screen and (min-width: 475px) {
+  nav {
+    img {
+      width: 30%;
+      margin-left: 2%;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  nav {
+    img {
+      width: 25%;
+      margin-left: 2%;
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  nav {
+    img {
+      width: 20%;
+      margin-left: 5%;
+    }
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  nav {
+    img {
+      width: 12%;
+      margin-left: 5%;
     }
   }
 }

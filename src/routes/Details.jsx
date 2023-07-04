@@ -1,7 +1,11 @@
 import DetailsPage from 'components/DetailsPage';
+import Footer from 'components/Footer';
 
 const Details = () => (
-  <DetailsPage />
+  <>
+    <DetailsPage />
+    <Footer />
+  </>
 );
 
 export default Details;

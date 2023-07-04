@@ -1,4 +1,6 @@
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { BsArrowLeftCircle } from 'react-icons/bs';
 import waterDrop from 'assets/icons/drop.png';
 import { getData } from 'redux/home/homeSlice';
 
@@ -35,6 +37,9 @@ const DetailsPage = () => {
       {clickedCity && Object.keys(clickedCity).length !== 0 && (
       <>
         <div className="details-section">
+          <NavLink to="/" className="back-arrow-link">
+            <BsArrowLeftCircle className="back-arrow" />
+          </NavLink>
           <div className="weather-infos-box">
             <div className="weather-icon-box">
               <img src={`https://download.spinetix.com/content/widgets/icons/weather/${clickedCity.weather.icon}.png`} alt="weather icon" />
@@ -89,7 +94,7 @@ const DetailsPage = () => {
         </div>
         <hr />
         <div className="other-pollutants">
-          <h2>Others Pollutant Concentrations</h2>
+          <h2>Other Pollutant Concentrations</h2>
           <p className="pollutant">
             CO:
             {' '}
