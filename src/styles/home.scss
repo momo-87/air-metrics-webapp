@@ -257,6 +257,7 @@ ul li a {
     display: flex;
     flex-direction: column;
     margin-top: 5px;
+    padding-bottom: 50px;
 
     div.city-item-box {
       width: 98%;
@@ -320,6 +321,22 @@ ul li a {
           padding-bottom: 10px;
         }
       }
+    }
+  }
+
+  div.footer {
+    background-color: #212a3e;
+    color: #f1f6f9;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5px;
+    padding-bottom: 10px;
+
+    p:nth-child(2) {
+      color: #FBAD95;
     }
   }
 }
@@ -451,6 +468,12 @@ ul li a {
         }
       }
     }
+  }
+
+  div.footer {
+    flex-direction: row;
+    gap: 20px;
+    height: 80px;
   }
 }
 

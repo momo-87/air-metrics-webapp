@@ -7,6 +7,13 @@
   }
 
   div.details-section {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+    color: #212a3e;
 
     .back-arrow-link {
       margin-left: -70%;
@@ -15,16 +22,8 @@
         font-size: 1.2rem;
         color: #212a3e;
     } 
+
     }
-
-
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 20px;
-    justify-content: center;
-    align-items: center;
-    color: #212a3e;
 
     div.weather-infos-box {
       width: 98%;
@@ -138,6 +137,7 @@
 
   div.other-pollutants {
     color: #212a3e;
+    padding-bottom: 50px;
 
     h2 {
       display: flex;
@@ -198,6 +198,10 @@
     }
   }
 
+  div.other-pollutants {
+    padding-bottom: 125px;
+  }
+
 }
 
 
@@ -216,8 +220,6 @@
       width: 50%;
 
       div.weather-data-box {
-      //   // display: flex;
-      //   // justify-content: space-around;
         width: 70%;
         font-size: 1rem;
       }
