@@ -1,16 +1,19 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const ipgeoApiKey = process.env.REACT_APP_IPGEO_API_KEY;
+const openweatherApiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
+
 export const getNearestCityData = createAsyncThunk('home/getNearestCityData', async (_, { rejectWithValue }) => {
   try {
-    const idendificationResp = await axios.get('https://api.ipgeolocation.io/ipgeo?&apiKey=8f0321e938094cc49488159b0f75cc88');
+    const idendificationResp = await axios.get(`https://api.ipgeolocation.io/ipgeo?&apiKey=${ipgeoApiKey}`);
     const country = idendificationResp.data.country_name;
     const state = idendificationResp.data.state_prov;
     const cityName = idendificationResp.data.city;
-    const coordResp = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const coordResp = await axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${openweatherApiKey}`);
     const { lat, lon } = coordResp.data[0];
-    const pollutionResp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const weatherResp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const pollutionResp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${openweatherApiKey}`);
+    const weatherResp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openweatherApiKey}`);
     const airPollutionIndex = pollutionResp.data.list[0].main.aqi;
     let pollutionLevel = '';
 
@@ -28,9 +31,9 @@ export const getNearestCityData = createAsyncThunk('home/getNearestCityData', as
 
     // city 1
     const otherCities = [];
-    const city1Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[0].lat}&lon=${coords[0].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const pollution1Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[0].lat}&lon=${coords[0].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const weather1Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[0].lat}&lon=${coords[0].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city1Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[0].lat}&lon=${coords[0].lon}&limit=1&appid=${openweatherApiKey}`);
+    const pollution1Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[0].lat}&lon=${coords[0].lon}&appid=${openweatherApiKey}`);
+    const weather1Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[0].lat}&lon=${coords[0].lon}&appid=${openweatherApiKey}`);
     if (city1Resp && pollution1Resp && weather1Resp) {
       const city1 = {
         city: city1Resp.data[0].name,
@@ -47,9 +50,9 @@ export const getNearestCityData = createAsyncThunk('home/getNearestCityData', as
     }
 
     // city 2
-    const city2Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[1].lat}&lon=${coords[1].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const pollution2Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[1].lat}&lon=${coords[1].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const weather2Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[1].lat}&lon=${coords[1].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city2Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[1].lat}&lon=${coords[1].lon}&limit=1&appid=${openweatherApiKey}`);
+    const pollution2Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[1].lat}&lon=${coords[1].lon}&appid=${openweatherApiKey}`);
+    const weather2Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[1].lat}&lon=${coords[1].lon}&appid=${openweatherApiKey}`);
     if (city2Resp && pollution2Resp && weather2Resp) {
       const city2 = {
         city: city2Resp.data[0].name,
@@ -66,9 +69,9 @@ export const getNearestCityData = createAsyncThunk('home/getNearestCityData', as
     }
 
     // city 3
-    const city3Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[2].lat}&lon=${coords[2].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const pollution3Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[2].lat}&lon=${coords[2].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const weather3Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[2].lat}&lon=${coords[2].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city3Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[2].lat}&lon=${coords[2].lon}&limit=1&appid=${openweatherApiKey}`);
+    const pollution3Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[2].lat}&lon=${coords[2].lon}&appid=${openweatherApiKey}`);
+    const weather3Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[2].lat}&lon=${coords[2].lon}&appid=${openweatherApiKey}`);
     if (city3Resp && pollution3Resp && weather3Resp) {
       const city3 = {
         city: city3Resp.data[0].name,
@@ -85,9 +88,9 @@ export const getNearestCityData = createAsyncThunk('home/getNearestCityData', as
     }
 
     // city 4
-    const city4Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[3].lat}&lon=${coords[3].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const pollution4Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[3].lat}&lon=${coords[3].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const weather4Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[3].lat}&lon=${coords[3].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city4Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[3].lat}&lon=${coords[3].lon}&limit=1&appid=${openweatherApiKey}`);
+    const pollution4Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[3].lat}&lon=${coords[3].lon}&appid=${openweatherApiKey}`);
+    const weather4Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[3].lat}&lon=${coords[3].lon}&appid=${openweatherApiKey}`);
     if (city4Resp && pollution4Resp && weather4Resp) {
       const city4 = {
         city: city4Resp.data[0].name,
@@ -104,9 +107,9 @@ export const getNearestCityData = createAsyncThunk('home/getNearestCityData', as
     }
 
     // city 5
-    const city5Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[4].lat}&lon=${coords[4].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const pollution5Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[4].lat}&lon=${coords[4].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const weather5Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[4].lat}&lon=${coords[4].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city5Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[4].lat}&lon=${coords[4].lon}&limit=1&appid=${openweatherApiKey}`);
+    const pollution5Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[4].lat}&lon=${coords[4].lon}&appid=${openweatherApiKey}`);
+    const weather5Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[4].lat}&lon=${coords[4].lon}&appid=${openweatherApiKey}`);
     if (city5Resp && pollution5Resp && weather5Resp) {
       const city5 = {
         city: city5Resp.data[0].name,
@@ -123,9 +126,9 @@ export const getNearestCityData = createAsyncThunk('home/getNearestCityData', as
     }
 
     // city 6
-    const city6Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[5].lat}&lon=${coords[5].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const pollution6Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[5].lat}&lon=${coords[5].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const weather6Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[5].lat}&lon=${coords[5].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city6Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[5].lat}&lon=${coords[5].lon}&limit=1&appid=${openweatherApiKey}`);
+    const pollution6Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[5].lat}&lon=${coords[5].lon}&appid=${openweatherApiKey}`);
+    const weather6Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[5].lat}&lon=${coords[5].lon}&appid=${openweatherApiKey}`);
     if (city6Resp && pollution6Resp && weather6Resp) {
       const city6 = {
         city: city6Resp.data[0].name,
@@ -142,9 +145,9 @@ export const getNearestCityData = createAsyncThunk('home/getNearestCityData', as
     }
 
     // city 7
-    const city7Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[6].lat}&lon=${coords[6].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const pollution7Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[6].lat}&lon=${coords[6].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const weather7Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[6].lat}&lon=${coords[6].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city7Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[6].lat}&lon=${coords[6].lon}&limit=1&appid=${openweatherApiKey}`);
+    const pollution7Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[6].lat}&lon=${coords[6].lon}&appid=${openweatherApiKey}`);
+    const weather7Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[6].lat}&lon=${coords[6].lon}&appid=${openweatherApiKey}`);
     if (city7Resp && pollution7Resp && weather7Resp) {
       const city7 = {
         city: city7Resp.data[0].name,
@@ -161,9 +164,9 @@ export const getNearestCityData = createAsyncThunk('home/getNearestCityData', as
     }
 
     // city 8
-    const city8Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[7].lat}&lon=${coords[7].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const pollution8Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[7].lat}&lon=${coords[7].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const weather8Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[7].lat}&lon=${coords[7].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city8Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[7].lat}&lon=${coords[7].lon}&limit=1&appid=${openweatherApiKey}`);
+    const pollution8Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[7].lat}&lon=${coords[7].lon}&appid=${openweatherApiKey}`);
+    const weather8Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[7].lat}&lon=${coords[7].lon}&appid=${openweatherApiKey}`);
     if (city8Resp && pollution8Resp && weather8Resp) {
       const city8 = {
         city: city8Resp.data[0].name,
@@ -227,7 +230,7 @@ export const getSelectedCity = createAsyncThunk('home/getUserInputData', async (
   try {
     let cities = [];
     if (userInput) {
-      const URL = `https://api.openweathermap.org/geo/1.0/direct?q=${userInput}&limit=5&appid=c435ab8224ec4a9e751a3469cb551dde`;
+      const URL = `https://api.openweathermap.org/geo/1.0/direct?q=${userInput}&limit=5&appid=${openweatherApiKey}`;
       const resp = await axios.get(URL);
       cities = resp.data;
     }
@@ -239,8 +242,8 @@ export const getSelectedCity = createAsyncThunk('home/getUserInputData', async (
 
 export const getSelectedCityData = createAsyncThunk('home/getSelectedCityData', async ({ lat, lon, name }, { rejectWithValue }) => {
   try {
-    const pollutionResp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const weatherResp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const pollutionResp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${openweatherApiKey}`);
+    const weatherResp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openweatherApiKey}`);
     const airPollutionIndex = pollutionResp.data.list[0].main.aqi;
     let pollutionLevel = '';
 
@@ -258,9 +261,9 @@ export const getSelectedCityData = createAsyncThunk('home/getSelectedCityData', 
 
     // city 1
     const otherCities = [];
-    const city1Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[0].lat}&lon=${coords[0].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const pollution1Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[0].lat}&lon=${coords[0].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const weather1Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[0].lat}&lon=${coords[0].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city1Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[0].lat}&lon=${coords[0].lon}&limit=1&appid=${openweatherApiKey}`);
+    const pollution1Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[0].lat}&lon=${coords[0].lon}&appid=${openweatherApiKey}`);
+    const weather1Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[0].lat}&lon=${coords[0].lon}&appid=${openweatherApiKey}`);
     if (city1Resp && pollution1Resp && weather1Resp) {
       const city1 = {
         city: city1Resp.data[0].name,
@@ -277,9 +280,9 @@ export const getSelectedCityData = createAsyncThunk('home/getSelectedCityData', 
     }
 
     // city 2
-    const city2Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[1].lat}&lon=${coords[1].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const pollution2Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[1].lat}&lon=${coords[1].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const weather2Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[1].lat}&lon=${coords[1].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city2Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[1].lat}&lon=${coords[1].lon}&limit=1&appid=${openweatherApiKey}`);
+    const pollution2Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[1].lat}&lon=${coords[1].lon}&appid=${openweatherApiKey}`);
+    const weather2Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[1].lat}&lon=${coords[1].lon}&appid=${openweatherApiKey}`);
     if (city2Resp && pollution2Resp && weather2Resp) {
       const city2 = {
         city: city2Resp.data[0].name,
@@ -296,9 +299,9 @@ export const getSelectedCityData = createAsyncThunk('home/getSelectedCityData', 
     }
 
     // city 3
-    const city3Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[2].lat}&lon=${coords[2].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const pollution3Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[2].lat}&lon=${coords[2].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const weather3Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[2].lat}&lon=${coords[2].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city3Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[2].lat}&lon=${coords[2].lon}&limit=1&appid=${openweatherApiKey}`);
+    const pollution3Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[2].lat}&lon=${coords[2].lon}&appid=${openweatherApiKey}`);
+    const weather3Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[2].lat}&lon=${coords[2].lon}&appid=${openweatherApiKey}`);
     if (city3Resp && pollution3Resp && weather3Resp) {
       const city3 = {
         city: city3Resp.data[0].name,
@@ -315,9 +318,9 @@ export const getSelectedCityData = createAsyncThunk('home/getSelectedCityData', 
     }
 
     // city 4
-    const city4Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[3].lat}&lon=${coords[3].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const pollution4Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[3].lat}&lon=${coords[3].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const weather4Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[3].lat}&lon=${coords[3].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city4Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[3].lat}&lon=${coords[3].lon}&limit=1&appid=${openweatherApiKey}`);
+    const pollution4Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[3].lat}&lon=${coords[3].lon}&appid=${openweatherApiKey}`);
+    const weather4Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[3].lat}&lon=${coords[3].lon}&appid=${openweatherApiKey}`);
     if (city4Resp && pollution4Resp && weather4Resp) {
       const city4 = {
         city: city4Resp.data[0].name,
@@ -334,9 +337,9 @@ export const getSelectedCityData = createAsyncThunk('home/getSelectedCityData', 
     }
 
     // city 5
-    const city5Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[4].lat}&lon=${coords[4].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const pollution5Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[4].lat}&lon=${coords[4].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const weather5Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[4].lat}&lon=${coords[4].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city5Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[4].lat}&lon=${coords[4].lon}&limit=1&appid=${openweatherApiKey}`);
+    const pollution5Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[4].lat}&lon=${coords[4].lon}&appid=${openweatherApiKey}`);
+    const weather5Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[4].lat}&lon=${coords[4].lon}&appid=${openweatherApiKey}`);
     if (city5Resp && pollution5Resp && weather5Resp) {
       const city5 = {
         city: city5Resp.data[0].name,
@@ -353,9 +356,9 @@ export const getSelectedCityData = createAsyncThunk('home/getSelectedCityData', 
     }
 
     // city 6
-    const city6Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[5].lat}&lon=${coords[5].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const pollution6Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[5].lat}&lon=${coords[5].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const weather6Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[5].lat}&lon=${coords[5].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city6Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[5].lat}&lon=${coords[5].lon}&limit=1&appid=${openweatherApiKey}`);
+    const pollution6Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[5].lat}&lon=${coords[5].lon}&appid=${openweatherApiKey}`);
+    const weather6Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[5].lat}&lon=${coords[5].lon}&appid=${openweatherApiKey}`);
     if (city6Resp && pollution6Resp && weather6Resp) {
       const city6 = {
         city: city6Resp.data[0].name,
@@ -372,9 +375,9 @@ export const getSelectedCityData = createAsyncThunk('home/getSelectedCityData', 
     }
 
     // city 7
-    const city7Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[6].lat}&lon=${coords[6].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const pollution7Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[6].lat}&lon=${coords[6].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const weather7Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[6].lat}&lon=${coords[6].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city7Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[6].lat}&lon=${coords[6].lon}&limit=1&appid=${openweatherApiKey}`);
+    const pollution7Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[6].lat}&lon=${coords[6].lon}&appid=${openweatherApiKey}`);
+    const weather7Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[6].lat}&lon=${coords[6].lon}&appid=${openweatherApiKey}`);
     if (city7Resp && pollution7Resp && weather7Resp) {
       const city7 = {
         city: city7Resp.data[0].name,
@@ -391,9 +394,9 @@ export const getSelectedCityData = createAsyncThunk('home/getSelectedCityData', 
     }
 
     // city 8
-    const city8Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[7].lat}&lon=${coords[7].lon}&limit=1&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const pollution8Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[7].lat}&lon=${coords[7].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
-    const weather8Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[7].lat}&lon=${coords[7].lon}&appid=c435ab8224ec4a9e751a3469cb551dde`);
+    const city8Resp = await axios.get(`https://api.openweathermap.org/geo/1.0/reverse?lat=${coords[7].lat}&lon=${coords[7].lon}&limit=1&appid=${openweatherApiKey}`);
+    const pollution8Resp = await axios.get(`https://api.openweathermap.org/data/2.5/air_pollution?lat=${coords[7].lat}&lon=${coords[7].lon}&appid=${openweatherApiKey}`);
+    const weather8Resp = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${coords[7].lat}&lon=${coords[7].lon}&appid=${openweatherApiKey}`);
     if (city8Resp && pollution8Resp && weather8Resp) {
       const city8 = {
         city: city8Resp.data[0].name,
